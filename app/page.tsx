@@ -1,126 +1,41 @@
 import { Container, Title, TopBar, ProductsGroupList, Filters } from '@/components/shared';
+import { prisma } from '@/prisma/prisma-client';
 
-export default function Home() {
+export default async function Home() {
+  const categories = await prisma.category.findMany({
+    include: {
+      products: {
+        include: {
+          ingredients: true,
+          items: true,
+        },
+      },
+    },
+  });
+  console.log(categories[0].products);
   return (
     <>
       <Container className="mt-10">
         <Title text="Все пиццы" size="lg" className="font-extrabold" />
       </Container>
-      <TopBar />
+      <TopBar categories={categories.filter((category) => category.products.length > 0)} />
       <Container className="pt-10 pb-14">
         <div className="flex gap-[80px]">
-          <div className="w-[250px]">
+          <div className="min-w-[250px]">
             <Filters />
           </div>
           <div className="">
-            <ProductsGroupList
-              title="Пиццы"
-              categoryId={1}
-              items={[
-                {
-                  id: 1,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 2,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 3,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 4,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 5,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 6,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-              ]}
-            />
-            <ProductsGroupList
-              title="Комбо"
-              categoryId={2}
-              items={[
-                {
-                  id: 1,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 2,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 3,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 4,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 5,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-                {
-                  id: 6,
-                  name: 'Пицца - кола',
-                  imageUrl:
-                    'https://media.dodostatic.net/image/r:292x292/11ef9050501f3fa690a64053f5f07626.avif',
-                  price: 500,
-                  items: [{ price: 500 }],
-                },
-              ]}
-            />
+            {categories.map(
+              (category) =>
+                category.products.length > 0 && (
+                  <ProductsGroupList
+                    key={category.id}
+                    title={category.name}
+                    categoryId={category.id}
+                    items={category.products}
+                  />
+                ),
+            )}
           </div>
         </div>
       </Container>

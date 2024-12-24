@@ -10,3 +10,5 @@ export { RangeSlider } from './range-slider';
 export { CheckboxFilterGroups } from './checkbox-filter-groups';
 export { PriductCard } from './priduct-card';
 export { ProductsGroupList } from './products-group-list';
+export { SearhInput } from './searh-input';
+export { ProductImage } from './product-image';
