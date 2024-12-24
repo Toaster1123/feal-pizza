@@ -12,3 +12,4 @@ export { PriductCard } from './priduct-card';
 export { ProductsGroupList } from './products-group-list';
 export { SearhInput } from './searh-input';
 export { ProductImage } from './product-image';
+export { GroupVariants } from './group-variants';
