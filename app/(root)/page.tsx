@@ -1,4 +1,4 @@
-import { Container, Title, TopBar, ProductsGroupList, Filters } from '@/components/shared';
+import { Container, Title, TopBar, ProductsGroupList, Filters } from '@/shared/components/shared';
 import { prisma } from '@/prisma/prisma-client';
 
 export default async function Home() {
@@ -12,7 +12,6 @@ export default async function Home() {
       },
     },
   });
-  console.log(categories[0].products);
   return (
     <>
       <Container className="mt-10">

@@ -1,10 +1,4 @@
-import {
-  ChooseProductModal,
-  Container,
-  GroupVariants,
-  ProductImage,
-  Title,
-} from '@/components/shared';
+import { ChooseProductModal, Container, GroupVariants, Title } from '@/shared/components/shared';
 import { prisma } from '@/prisma/prisma-client';
 import { notFound } from 'next/navigation';
 
@@ -22,9 +16,7 @@ export default async function ProductModalPage({ params: { id } }: { params: { i
 
   return (
     <div>
-      {/* <Container className="flex flex-col my-10"> */}
       <ChooseProductModal product={product} />
-      {/* </Container> */}
     </div>
   );
 }
