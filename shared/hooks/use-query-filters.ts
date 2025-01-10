@@ -18,7 +18,7 @@ export const useQueryFilters = (filters: Filters) => {
       arrayFormat: 'comma',
     });
 
-    router.push(`?${query}`, {
+    router.replace(`?${query}`, {
       scroll: false,
     });
   }, [filters]);

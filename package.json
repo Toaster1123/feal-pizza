@@ -2,6 +2,19 @@
   "name": "pizza-ts-next",
   "version": "0.1.0",
   "private": true,
+  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
+  "homepage": "https://github.com/Toaster1123/feal-pizza#readme",
+  "bugs": {
+    "url": "https://github.com/Toaster1123/feal-pizza/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Toaster1123/feal-pizza.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,9 +23,6 @@
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
     "prisma:seed": "prisma db seed"
-  },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.1.0",
@@ -29,11 +39,8 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.469.0",
-    "next": "14.2.16",
     "prisma": "^6.1.0",
     "qs": "^6.13.1",
-    "react": "^18",
-    "react-dom": "^18",
     "react-use": "^17.6.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
@@ -43,13 +50,16 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
-    "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/node": "20.17.12",
+    "@types/react": "18.3.18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.16",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "5.7.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }
