@@ -85,7 +85,7 @@ model CartItem {
     productItemId Int
     cart          Cart         @relation(fields: [cartId], references: [id])
     cartId        Int
-    quantity      Int
+    quantity      Int          @default(1)
     ingredients   Ingredient[]
     createAt      DateTime     @default(now())
     updateAt      DateTime     @updatedAt

@@ -6,7 +6,6 @@ import { Filters } from './use-filters';
 
 export const useQueryFilters = (filters: Filters) => {
   const router = useRouter();
-
   React.useEffect(() => {
     const params = {
       ...filters.price,
@@ -21,5 +20,5 @@ export const useQueryFilters = (filters: Filters) => {
     router.replace(`?${query}`, {
       scroll: false,
     });
-  }, [filters]);
+  }, [filters.pizzaTypes, filters.price, filters.selectedIngredients, filters.sizes]);
 };

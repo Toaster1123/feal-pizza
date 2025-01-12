@@ -4,3 +4,4 @@ export { getPizzaDetails } from './get-pizza-details';
 export { getCartitemDetais } from './get-cart-item-details';
 export { getCartDetails } from './get-cart-details';
 export { calcCartItemTotalPrice } from './calc-cart-item-total-price';
+export { updateCartTotalAmount } from './update-cart-total-amount';
