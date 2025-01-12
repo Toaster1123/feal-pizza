@@ -13,7 +13,7 @@ import {
 } from '@/shared/components/ui/sheet';
 import { Button } from '../ui';
 import { CartDrawerItem } from './cart-drawer-item';
-import { getCartitemDetais } from '@/shared/lib';
+import { getCartItemDetais } from '@/shared/lib';
 import { useCartStore } from '@/shared/store';
 import { PizzaSize, PizzaType } from '@/shared/constants/pizza';
 
@@ -38,22 +38,25 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children,
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#f4f1ee] select-none">
-        <SheetHeader>
-          <SheetTitle>
-            В корзине <span className="font-bold">3 товара</span>
-          </SheetTitle>
-        </SheetHeader>
+        {totalAmount > 0 ? (
+          <SheetHeader>
+            <SheetTitle>
+              В корзине <span className="font-bold">{items.length} товара</span>
+            </SheetTitle>
+          </SheetHeader>
+        ) : (
+          'Корзина пуста'
+        )}
 
         <div className="-mx-6 mt-5 overflow-auto flex-1">
-          <div className="mb-2">
-            {items.map((item) => (
+          {items.map((item) => (
+            <div className="mb-2" key={item.id}>
               <CartDrawerItem
-                key={item.id}
                 id={item.id}
                 imageUrl={item.imageUrl}
                 details={
                   item.pizzaSize && item.pizzaType
-                    ? getCartitemDetais(
+                    ? getCartItemDetais(
                         item.ingredients,
                         item.pizzaSize as PizzaSize,
                         item.pizzaType as PizzaType,
@@ -66,8 +69,8 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children,
                 onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
                 onClickRemove={() => removeCartItem(item.id)}
               />
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
 
         <SheetFooter className="-mx-6 bg-white p-8">
