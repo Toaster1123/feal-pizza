@@ -35,7 +35,7 @@ export default async function ProductPage({ params: { id } }: { params: { id: nu
                   disabled: true,
                 },
               ]}
-              selectedValue="2"
+              value="2"
             />
           </div>
         </div>
