@@ -8,10 +8,10 @@ import { ChooseProductForm } from './choose-product-form';
 
 interface Props {
   product: ProductWithRelations;
-  className?: string;
+  onSubmit?: VoidFunction;
 }
 
-export const ProductForm: React.FC<Props> = ({ product }) => {
+export const ProductForm: React.FC<Props> = ({ product, onSubmit: _onSubmit }) => {
   const { addCartItem, loading } = useCartStore((store) => store);
 
   const firstItem = product.items[0];
@@ -27,6 +27,7 @@ export const ProductForm: React.FC<Props> = ({ product }) => {
       });
 
       toast.success(product.name + ' успешно добавлен в корзину');
+      _onSubmit();
     } catch (error) {
       toast.error('Не удалось добавить товар в корзину');
       console.error(error);
