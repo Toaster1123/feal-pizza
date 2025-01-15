@@ -1,4 +1,3 @@
-import { connect } from 'http2';
 import { categoties, ingredients, products } from './constants';
 import { prisma } from './prisma-client';
 import { hashSync } from 'bcrypt';

@@ -20,5 +20,5 @@ export const useQueryFilters = (filters: Filters) => {
     router.replace(`?${query}`, {
       scroll: false,
     });
-  }, [filters.pizzaTypes, filters.price, filters.selectedIngredients, filters.sizes]);
+  }, [filters]);
 };

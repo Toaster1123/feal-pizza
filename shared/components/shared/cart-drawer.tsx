@@ -21,7 +21,7 @@ interface Props {
   className?: string;
 }
 
-export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children, className }) => {
+export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ children }) => {
   const { totalAmount, items, fetchCartItems, updateItemQuantity, removeCartItem } = useCartStore(
     (state) => state,
   );
