@@ -12,6 +12,8 @@ export const AddresInput: React.FC<Props> = ({ onChange }) => {
     <AddressSuggestions
       token="8b53f52f7395250f613b625c7a6d55844001517b "
       onChange={(data) => onChange?.(data.value)}
+      uid="dadata-address-order-page"
+      highlightClassName="text-orange-600 bg-none"
     />
   );
 };

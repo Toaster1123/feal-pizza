@@ -13,7 +13,7 @@ export const CheckoutAddresForm: React.FC<Props> = ({ className }) => {
   const { control } = useFormContext();
   return (
     <WhiteBlock title="3. Адрес доставки" className={className}>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 ">
         <Controller
           control={control}
           name="address"
@@ -21,9 +21,7 @@ export const CheckoutAddresForm: React.FC<Props> = ({ className }) => {
             <>
               <AddresInput onChange={field.onChange} />
               {fieldState?.error && (
-                <ErrorText
-                  text={fieldState.error.message}
-                  className="text-red-500 text-sm "></ErrorText>
+                <ErrorText text={fieldState.error.message} className="text-red-500 text-sm " />
               )}
             </>
           )}
