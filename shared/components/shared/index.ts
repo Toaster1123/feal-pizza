@@ -33,4 +33,5 @@ export { ClearButton } from './clear-button';
 export { AddresInput } from './addres-input';
 export * from './modals';
 export * from './form';
+export * from './email-templates';
 export * from './checkout';

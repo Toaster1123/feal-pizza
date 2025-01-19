@@ -16,8 +16,8 @@ import {
 import { useCart } from '@/shared/hooks';
 import { cn } from '@/shared/lib/utils';
 import toast from 'react-hot-toast';
-import { createOrder } from '@/app/api/actions';
 import React from 'react';
+import { createOrder } from '@/app/actions';
 
 export default function CheckoutPage() {
   const { onClickCountButton, totalAmount, items, loading, removeCartItem } = useCart();
