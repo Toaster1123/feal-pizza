@@ -25,7 +25,9 @@ export const CheckoutCart: React.FC<Props> = ({
     <WhiteBlock title="1. Корзина" className={className}>
       <div className="flex flex-col gap-5">
         {loading
-          ? [...Array(items.length || 3)].map((_, id) => <CheckoutItemSkeleton key={id} />)
+          ? [...Array(items.length || 3)].map((_, id) => (
+              <CheckoutItemSkeleton key={id} className="h-[60px]" />
+            ))
           : items.map((item) => (
               <CheckoutItem
                 key={item.id}

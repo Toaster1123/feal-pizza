@@ -22,7 +22,7 @@ import { cn } from '@/shared/lib/utils';
 import { useCart } from '@/shared/hooks';
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const { totalAmount, items, onClickCountButton, removeCartItem } = useCart();
+  const { totalAmount, items, onClickCountButton, removeCartItem, loading } = useCart();
   const [redirecting, setRedirecting] = React.useState(false);
 
   return (
@@ -68,6 +68,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                       name={item.name}
                       disabled={item.disabled}
                       price={item.price}
+                      loading={loading}
                       quantity={item.quantity}
                       onClickCountButton={(type) =>
                         onClickCountButton(item.id, item.quantity, type)
