@@ -75,6 +75,7 @@ export async function createOrder(data: CheckoutFormValues) {
       amount: order.totalAmount,
       orderId: order.id,
       description: 'Оплата заказа № ' + order.id,
+      email: order.email,
     });
 
     if (!paymentData) {

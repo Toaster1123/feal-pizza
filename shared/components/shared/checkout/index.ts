@@ -1,3 +1,3 @@
 export { CheckoutCart } from './checkout-cart';
 export { CheckoutPersonalForm } from './checkout-personal-form';
-export { CheckoutAddresForm } from './checkout-addres-form';
+export { CheckoutAddressForm } from './checkout-addres-form';

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { checkoutFormSchema, CheckoutFormValues } from '@/shared/constants';
 import {
-  CheckoutAddresForm,
+  CheckoutAddressForm,
   CheckoutCart,
   CheckoutPersonalForm,
   CheckoutSlidebar,
@@ -66,7 +66,7 @@ export default function CheckoutPage() {
                 removeCartItem={removeCartItem}
               />
               <CheckoutPersonalForm className={cn({ 'opacity-40 pointer-events-none': loading })} />
-              <CheckoutAddresForm className={loading && 'opacity-40 pointer-events-none'} />
+              <CheckoutAddressForm className={loading && 'opacity-40 pointer-events-none'} />
             </div>
             <div className="w-[450px]">
               <CheckoutSlidebar totalAmount={totalAmount} loading={loading || submiting} />
