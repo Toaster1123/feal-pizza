@@ -40,7 +40,6 @@ export default function CheckoutPage() {
 
   React.useEffect(() => {
     async function fetchUserInfo() {
-      console.log(session);
       const data = await Api.auth.getMe();
       const [firstName, lastName] = data.fullName.split(' ');
 

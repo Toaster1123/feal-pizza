@@ -14,7 +14,6 @@ const DEFAULT_MIN_PRICE = 0;
 const DEFAULT_MAX_PRICE = 1000;
 
 export const findPizzas = async (params: GetSearchParams) => {
-  console.log(await params);
   const sizes = params.sizes?.split(',').map(Number);
   const pizzaTypes = params.pizzaTypes?.split(',').map(Number);
   const ingredientsIdArr = params.ingredients?.split(',').map(Number);

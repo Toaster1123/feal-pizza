@@ -1,9 +1,10 @@
 import React from 'react';
 import { signIn } from 'next-auth/react';
 
-import { Dialog, DialogContent } from '@/shared/components/ui/dialog';
+import { Dialog, DialogContent, DialogTitle } from '@/shared/components/ui/dialog';
 import { Button } from '@/shared/components/ui';
 import { LoginForm, RegisterForm } from './forms';
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden';
 
 interface Props {
   open: boolean;
@@ -22,6 +23,9 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
   };
   return (
     <Dialog open={open} onOpenChange={handleClose}>
+      <VisuallyHidden>
+        <DialogTitle />
+      </VisuallyHidden>
       <DialogContent className="w-[450px] bg-white p-10">
         {type == 'login' ? (
           <LoginForm onClose={handleClose} />

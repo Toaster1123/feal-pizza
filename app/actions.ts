@@ -180,7 +180,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
       }),
     );
   } catch (err) {
-    console.log('Error [CREATE_USER]', err);
+    console.error('Error [CREATE_USER]', err);
     throw err;
   }
 }

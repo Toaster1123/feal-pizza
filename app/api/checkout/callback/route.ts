@@ -20,7 +20,6 @@ export async function POST(req: NextRequest) {
     }
 
     const isSucceeded = body.object.status === 'succeeded';
-
     await prisma.order.update({
       where: {
         id: order.id,
