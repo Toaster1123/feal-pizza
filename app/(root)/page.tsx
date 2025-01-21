@@ -1,10 +1,10 @@
 import { Container, Title, TopBar, ProductsGroupList, Filters } from '@/shared/components/shared';
 import { Suspense } from 'react';
-import { findPizzas } from '@/shared/lib';
-import { GetSearchParams } from '@/shared/lib/find-pizzas';
+import { findPizzas, GetSearchParams } from '@/shared/lib/find-pizzas';
 
 export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
   const categories = await findPizzas(searchParams);
+
   return (
     <>
       <Container className="mt-10">

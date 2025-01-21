@@ -4,7 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { AuthModal, CartButton, Container, SearhInput } from './index';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { ProfileButton } from './profile-button';
 
@@ -15,13 +15,26 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ hasCart = true, hasSearch = true, className }) => {
+  const router = useRouter();
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
   const searchParams = useSearchParams();
+
   React.useEffect(() => {
+    let toastMessage = '';
     if (searchParams.has('paid')) {
+      toastMessage = 'Заказ успешно оплачен! Информация отправленна на почту';
+    }
+    if (searchParams.has('verified')) {
+      toastMessage = 'Почта успещно подтверждена!';
+    }
+
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success('Заказ успешно оплачен! Информация отправленна на почту');
-      }, 200);
+        router.replace('/');
+        toast.success(toastMessage, {
+          duration: 3000,
+        });
+      }, 300);
     }
   }, []);
 
